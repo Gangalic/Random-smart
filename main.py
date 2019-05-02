@@ -96,7 +96,7 @@ def get_resource():
 if __name__ == '__main__':
     try:
         print("hui")
-        connection = pymysql.connect(host='127.0.0.1',
+        dbconx = pymysql.connect(host='127.0.0.1',
                                      user='<USER>',
                                      password='<PASSWORD>',
                                      db='<DATABASE>')
