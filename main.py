@@ -1,7 +1,7 @@
 #!/usr/bin/env python
 import os
 import mysql.connector
-import config
+import pymysql
 from mysql.connector import Error
 from mysql.connector import errorcode
 from hashlib import md5
@@ -11,7 +11,7 @@ from flask import Flask, abort, request, jsonify, g, url_for
 # initialization
 app = Flask(__name__)
 ##-----------------------------------------------------------------------
-dbconx = SQLALCHEMY_DATABASE_URI#None
+dbconx = None
 
 db = [
     {
@@ -96,19 +96,10 @@ def get_resource():
 if __name__ == '__main__':
     try:
         print("hui")
-        # dbconx = sqlalchemy.create_engine(
-        #     # Equivalent URL:
-        #     # mysql+pymysql://<db_user>:<db_pass>@/<db_name>?unix_socket=/cloudsql/<cloud_sql_instance_name>
-        #     sqlalchemy.engine.url.URL(
-        #         drivername='mysql+pymysql',
-        #         username='root',
-        #         password='smartroot',
-        #         database='smart',
-        #         query={
-        #             'unix_socket': '/cloudsql/{}'.format('lyon-quest:europe-west1:lyon-quest-db')
-        #         }
-        #     )
-        # )
+        connection = pymysql.connect(host='127.0.0.1',
+                                     user='<USER>',
+                                     password='<PASSWORD>',
+                                     db='<DATABASE>')
         print("dupa")
         print(dbconx)
     except mysql.connector.Error as error :
