@@ -97,9 +97,9 @@ if __name__ == '__main__':
     try:
         print("hui")
         dbconx = pymysql.connect(host='127.0.0.1',
-                                     user='<USER>',
-                                     password='<PASSWORD>',
-                                     db='<DATABASE>')
+                                     user='root',
+                                     password='smartroot',
+                                     db='lyon-quest-db')
         print("dupa")
         print(dbconx)
     except mysql.connector.Error as error :
