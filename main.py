@@ -96,10 +96,19 @@ def get_resource():
 if __name__ == '__main__':
     try:
         print("hui")
-        dbconx = pymysql.connect(host='127.0.0.1',
-                                     user='root',
-                                     password='smartroot',
-                                     db='lyon-quest-db')
+        # The SQLAlchemy engine will help manage interactions, including automatically
+        # managing a pool of connections to your database
+        dbconx = sqlalchemy.create_engine(
+            sqlalchemy.engine.url.URL(
+                drivername='mysql+pymysql',
+                username='root',
+                password='smartroot',
+                database='smart',
+                query={
+                    'unix_socket': '/cloudsql/{}'.format('lyon-quest:europe-west1:lyon-quest-db')
+                }
+            )
+        )
         print("dupa")
         print(dbconx)
     except mysql.connector.Error as error :
