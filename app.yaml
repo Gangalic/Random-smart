@@ -1,0 +1,6 @@
+runtime: python37
+
+#[START cloudsql_settings]
+beta_settings:
+  cloud_sql_instances: "lyon-quest:europe-west1:lyon-quest-db"
+#[END cloudsql_settings]
